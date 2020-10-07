@@ -101,10 +101,7 @@ func MakeAndStartBot(version, token, port, emojiGuildID string, numShards, shard
 }
 
 func socketioServer(port string) {
-	server, err := socketio.NewServer(nil)
-	if err != nil {
-		log.Fatal(err)
-	}
+	server := socketio.NewServer(nil)
 	server.OnConnect("/", func(s socketio.Conn) error {
 		s.SetContext("")
 		log.Println("connected:", s.ID())
